@@ -1,10 +1,8 @@
 const express = require('express')
+const path = require('path')
 
 const app = new express()
 
-app.get('/', function (req, res, next) {
-  res.send('express is working')
-})
+app.use('/', express.static(path.join(__dirname, 'view')))
 
 app.listen(3000)
-
