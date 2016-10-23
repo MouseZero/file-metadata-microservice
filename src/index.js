@@ -1,4 +1,10 @@
-/**
- * Created by zero on 10/23/16.
- */
-console.log((_ => 'Testing ESlint')())
+const express = require('express')
+
+const app = new express()
+
+app.get('/', function (req, res, next) {
+  res.send('express is working')
+})
+
+app.listen(3000)
+
