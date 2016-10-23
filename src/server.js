@@ -1,12 +1,16 @@
 const Express = require('express')
 const path = require('path')
+const multer = require('multer')
+const upload = multer({ dest: 'upload/' })
 
 const app = new Express()
 
+// Main Page
 app.use('/', Express.static(path.join(__dirname, 'view')))
 
-app.post('/', function (req, res, next){
-  res.send('recieved post')
+// Upload page
+app.post('/', upload.single('avatar'), function (req, res, next) {
+  res.json({size: req.file.size})
 })
 
 const port = process.env.PORT || 3000
